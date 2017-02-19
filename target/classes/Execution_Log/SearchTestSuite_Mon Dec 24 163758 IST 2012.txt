@@ -1,0 +1,20 @@
+TestCaseID							TestStep							BDD_Step							Status							Remarks
+
+TC_Test01							openbrowser							Given : I am on CDI Application							pass							
+
+LoginToHI							enterdata							When : I logged in as  cdisuper user.							fail							Unable to locate element
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.25.0', revision: '17482', time: '2012-07-18 22:18:01'
+System info: os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_05'
+Driver info: driver.version: unknown
+
+LoginToHI							enterdata							null							fail							Unable to locate element
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.25.0', revision: '17482', time: '2012-07-18 22:18:01'
+System info: os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.7.0_05'
+Driver info: driver.version: unknown
+
+LoginToHI							click							null							pass							
+
+TC_Test01							verifyTextpresent							null							fail							Text : cdisuper is not found on page
+

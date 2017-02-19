@@ -1,0 +1,340 @@
+TestCaseID							TestStep							BDD_Step							Status							Remarks
+
+TestSearchGoldenRecords							openbrowser							Given I Open the browser							pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							click														pass							
+
+TestSearchGoldenRecords							enterdata							When I enter {data} in Search Input							pass							
+
+TestSearchGoldenRecords							click							And I Press submit button							pass							
+
+TestSearchGoldenRecords							verifypageproperty							Then the Url should be like {data}							pass							
+
+TestSearchGoldenRecords							verifyTextpresent							And {data} should be present on the page							pass							
+
+TestMoveToNew							openbrowser							Given I Open HI Application.							pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							click														pass							
+
+TestMoveToNew							navigateUrl							When I Navigate to Move page.							pass							
+
+TestMoveToNew							verifytextpresent							Then I Verify control is in Move page.							pass							
+
+TestMoveToNew							click							And I Select Record Type as Person.							pass							
+
+TestMoveToNew							enterdata							And I Enter KeyWord for search							pass							
+
+TestMoveToNew							click														pass							
+
+TestMoveToNew							getObjectProperty							Then I Populate SourceIDs							pass							
+
+TestMoveToNew							getObjectProperty														pass							
+
+TestMoveToNew							check							And I Select SR to move.							pass							
+
+TestMoveToNew							check														pass							
+
+TestMoveToNew							click							When I Move To New GR							pass							
+
+TestMoveToNew							verifyobjectpresent							And I Verify SR1 ID							pass							
+
+TestMoveToNew							verifyobjectpresent							And I verify SR2 ID							pass							
+
+TestMoveToNew							enterdata							And I Enter Comments.							pass							
+
+TestMoveToNew							click							And I saved the action							pass							
+
+TestMoveToNew							click							And I click on Audit panel							pass							
+
+TestMoveToNew							getObjectProperty							When I stored the GRId1							pass							
+
+TestMoveToNew							click							And I click on the GR ID 1							pass							
+
+TestMoveToNew							verifyObjectPresent							And I check for the ShowAll Test Object							pass							
+
+TestMoveToNew							verifytextpresent							And I verify first Golden record is closed							fail							Text : closed is not found on page
+
+TestMoveToNew							verifytextpresent							And I verify the Golden Record Id							pass							
+
+TestMoveToNew							closebrowser							Then I close all the browser.							pass							
+
+TestMoveToExisting							openbrowser							Given I Open HI Application.							pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							click														pass							
+
+TestMoveToExisting							navigateUrl							And I Navigate to Move page.							pass							
+
+TestMoveToExisting							verifytextpresent							Then I Verify control is in Move page.							pass							
+
+TestMoveToExisting							click							And I Select Record Type as Person.							pass							
+
+TestMoveToExisting							enterdata							And I Enter KeyWord for search							pass							
+
+TestMoveToExisting							click														pass							
+
+TestMoveToExisting							getObjectProperty							And I Populate SourceIDs							pass							
+
+TestMoveToExisting							getObjectProperty														pass							
+
+TestMoveToExisting							check							And I Select SR to move.							pass							
+
+TestMoveToExisting							check														pass							
+
+TestMoveToExisting							click							Then I Move To Existing GR							pass							
+
+TestMoveToExisting							click							And I Click on drop down image							pass							
+
+TestMoveToExisting							verifytextpresent							Then I Verify controls on Move to Existing Page							pass							
+
+TestMoveToExisting							enterdata														pass							
+
+TestMoveToExisting							click														pass							
+
+TestMoveToExisting							click														pass							
+
+TestMoveToExisting							getObjectProperty														pass							
+
+TestMoveToExisting							click														pass							
+
+TestMoveToExisting							enterdata														pass							
+
+TestMoveToExisting							click														pass							
+
+TestMoveToExisting							getObjectProperty							When I stored the GRId1							fail							Unable to locate element
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.27.0', revision: '18259', time: '2012-12-05 11:30:53'
+System info: os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.6.0_26'
+Driver info: driver.version: unknown
+
+TestMoveToExisting							getObjectProperty							And I stored second GRId2							pass							
+
+TestMoveToExisting							navigateUrl							And I open the first Golden Record							pass							
+
+TestMoveToExisting							closeAllBrowsers														pass							
+
+TestSourceRecordsSearch							openbrowser							Given I Open HI Application.							pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							click														pass							
+
+TestSourceRecordsSearch							navigateUrl														pass							
+
+TestSourceRecordsSearch							click							And I Select Record Type as Person.							pass							
+
+TestSourceRecordsSearch							enterdata														pass							
+
+TestSourceRecordsSearch							click														pass							
+
+TestSplitWithMultipleSourceRecords							openbrowser							Given I Open HI Application.							pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							click														pass							
+
+TestSplitWithMultipleSourceRecords							navigateUrl							And I Click on Data Steward->Split							pass							
+
+TestSplitWithMultipleSourceRecords							click							And I Select Record Type as Person.							pass							
+
+TestSplitWithMultipleSourceRecords							enterdata							And I Enter KeyWord for search							pass							
+
+TestSplitWithMultipleSourceRecords							click							Then I Click on search button							pass							
+
+TestSplitWithMultipleSourceRecords							getObjectProperty							And I Get the id of first Golden record							pass							
+
+TestSplitWithMultipleSourceRecords							click							Then I Click on the first Gloden Record to split							pass							
+
+TestSplitWithMultipleSourceRecords							verifyObjectProperty							Then I verify Split button is not enabled							pass							
+
+TestSplitWithMultipleSourceRecords							check							And I Select first SR 							pass							
+
+TestSplitWithMultipleSourceRecords							verifyObjectProperty							Then I verify Split button is enabled							pass							
+
+TestSplitWithMultipleSourceRecords							click							And I Click on Split button							pass							
+
+TestSplitWithMultipleSourceRecords							enterdata							And I Write comment 							pass							
+
+TestSplitWithMultipleSourceRecords							click							Then I Click on Save							pass							
+
+TestSplitWithMultipleSourceRecords							closebrowser														pass							
+
+TestSplitWithOneSourceRecords							openbrowser							Given I Open HI Application.							pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							click														pass							
+
+TestSplitWithOneSourceRecords							navigateUrl							Then I Click on Data Steward->Split							pass							
+
+TestSplitWithOneSourceRecords							click							And I Select Record Type as Person.							pass							
+
+TestSplitWithOneSourceRecords							enterdata							And I Enter KeyWord for search							pass							
+
+TestSplitWithOneSourceRecords							click							Then I Click on search button							pass							
+
+TestSplitWithOneSourceRecords							getObjectProperty							And I Get the id of first Golden record							pass							
+
+TestSplitWithOneSourceRecords							click							Then I Click on the first Gloden Record to split							pass							
+
+TestSplitWithOneSourceRecords							verifyObjectProperty							And I verify Split button is not enabled							pass							
+
+TestSplitWithOneSourceRecords							check							Then I Select first SR 							pass							
+
+TestSplitWithOneSourceRecords							verifyObjectProperty							And I verify Split button is still not enabled							pass							
+
+TestSplitWithOneSourceRecords							closebrowser														pass							
+
+TestMergeGoldenRecordsOnSave							openbrowser							Given I Open HI Application.							pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							click														pass							
+
+TestMergeGoldenRecordsOnSave							navigateUrl							And I Click on Data Steward->Merge							pass							
+
+TestMergeGoldenRecordsOnSave							click							And I Select Record Type as Person.							pass							
+
+TestMergeGoldenRecordsOnSave							enterdata							And I Enter KeyWord for search							pass							
+
+TestMergeGoldenRecordsOnSave							click							Then I Click on search button							pass							
+
+TestMergeGoldenRecordsOnSave							verifyObjectProperty							And I verify Merge button is not enabled							pass							
+
+TestMergeGoldenRecordsOnSave							getObjectProperty							Then I Get the id of first Golden record to merge							pass							
+
+TestMergeGoldenRecordsOnSave							getObjectProperty							And I Get the id of second Golden record to merge							pass							
+
+TestMergeGoldenRecordsOnSave							click							And I Select first Gloden Record to merge							pass							
+
+TestMergeGoldenRecordsOnSave							click							And I Select second Gloden Record to merge							pass							
+
+TestMergeGoldenRecordsOnSave							verifyObjectProperty							Then I verify Merge button is enabled							pass							
+
+TestMergeGoldenRecordsOnSave							click							And I Click on Merge button							pass							
+
+TestMergeGoldenRecordsOnSave							enterdata							Writing comment 							pass							
+
+TestMergeGoldenRecordsOnSave							click							Click on Save							pass							
+
+TestMergeGoldenRecordsOnSave							closebrowser														pass							
+
+TestMergeGoldenRecordsOnCancel							openbrowser							Given I Open HI Application.							pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							click														pass							
+
+TestMergeGoldenRecordsOnCancel							navigateUrl							And I Click on Data Steward->Merge							pass							
+
+TestMergeGoldenRecordsOnCancel							verifyTextpresent							Then I Verify control is on Merge page							pass							
+
+TestMergeGoldenRecordsOnCancel							click							And I Select Record Type as Person.							pass							
+
+TestMergeGoldenRecordsOnCancel							enterdata							And I Enter KeyWord for search							pass							
+
+TestMergeGoldenRecordsOnCancel							click							Then I Click on search button							pass							
+
+TestMergeGoldenRecordsOnCancel							verifyObjectProperty							And I verify Merge button is not enabled							pass							
+
+TestMergeGoldenRecordsOnCancel							getObjectProperty							And I Get the id of first Golden record to merge							pass							
+
+TestMergeGoldenRecordsOnCancel							getObjectProperty							Then I Get the id of second Golden record to merge							pass							
+
+TestMergeGoldenRecordsOnCancel							click							Then I Select first Gloden Record to merge							pass							
+
+TestMergeGoldenRecordsOnCancel							click							And I Select second Gloden Record to merge							pass							
+
+TestMergeGoldenRecordsOnCancel							verifyObjectProperty							Then I verify Merge button is enabled							pass							
+
+TestMergeGoldenRecordsOnCancel							click							And I Click on Merge button							pass							
+
+TestMergeGoldenRecordsOnCancel							enterdata							And I Writing comment 							pass							
+
+TestMergeGoldenRecordsOnCancel							click							Then I Click on cancel							pass							
+
+TestMergeGoldenRecordsOnCancel							verifyTextpresent							And I Verify that Golden record merged							pass							
+
+TestMergeGoldenRecordsOnCancel							closebrowser														pass							
+
+TestMergeGoldenRecordsAudit							openbrowser							Given I Open HI Application.							pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							click														pass							
+
+TestMergeGoldenRecordsAudit							navigateUrl							Then I Click on Data Steward->Merge							pass							
+
+TestMergeGoldenRecordsAudit							verifyTextpresent							And I Verify control is on Merge page							pass							
+
+TestMergeGoldenRecordsAudit							click							And I Select Record Type as Person.							pass							
+
+TestMergeGoldenRecordsAudit							enterdata							Then I Enter KeyWord for search							pass							
+
+TestMergeGoldenRecordsAudit							click							And I Click on search button							pass							
+
+TestMergeGoldenRecordsAudit							verifyObjectProperty							Then I verify Merge button is not enabled							pass							
+
+TestMergeGoldenRecordsAudit							getObjectProperty							And I Get the id of first Golden record to merge							pass							
+
+TestMergeGoldenRecordsAudit							getObjectProperty							Then I Get the id of second Golden record to merge							pass							
+
+TestMergeGoldenRecordsAudit							click							And I Select first Gloden Record to merge							pass							
+
+TestMergeGoldenRecordsAudit							click							Then I Select second Gloden Record to merge							pass							
+
+TestMergeGoldenRecordsAudit							verifyObjectProperty							And I verify Merge button is enabled							pass							
+
+TestMergeGoldenRecordsAudit							click							Then I Click on Merge button							pass							
+
+TestMergeGoldenRecordsAudit							enterdata							Then I Writing comment 							pass							
+
+TestMergeGoldenRecordsAudit							click							And I Click on Save							pass							
+
+TestMergeGoldenRecordsAudit							click							And I Click on Audit button							pass							
+
+TestMergeGoldenRecordsAudit							click							Then I Click on Panel							pass							
+
+TestMergeGoldenRecordsAudit							verifyobjectpresent							And I Source Records displayed on panel							fail							Unable to locate element
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.27.0', revision: '18259', time: '2012-12-05 11:30:53'
+System info: os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.6.0_26'
+Driver info: driver.version: unknown
+
+TestMergeGoldenRecordsAudit							click							Then I Click on Panel							fail							Unable to locate element
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.27.0', revision: '18259', time: '2012-12-05 11:30:53'
+System info: os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.6.0_26'
+Driver info: driver.version: unknown
+
+TestMergeGoldenRecordsAudit							verifyobjectpresent							And I Source Records not displayed on panel							fail							Unable to locate element
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.27.0', revision: '18259', time: '2012-12-05 11:30:53'
+System info: os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.6.0_26'
+Driver info: driver.version: unknown
+
+TestMergeGoldenRecordsAudit							closeallbrowsers														pass							
+

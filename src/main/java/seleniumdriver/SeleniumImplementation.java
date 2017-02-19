@@ -1,0 +1,877 @@
+/*********************************************
+ seleniumdriver.SeleniumImplementation.java : Contains all selenium implementation functionalities.
+ ********************************************/
+
+
+package seleniumdriver;
+
+import java.io.File;
+import java.lang.reflect.Array;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Set;
+
+
+import org.openqa.selenium.By;
+import org.openqa.selenium.Cookie;
+import org.openqa.selenium.Keys;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TimeoutException;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebDriverBackedSelenium;
+import org.openqa.selenium.WebDriverException;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeDriverService;
+import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.firefox.FirefoxProfile;
+import org.openqa.selenium.ie.InternetExplorerDriver;
+import org.openqa.selenium.internal.WrapsDriver;
+import org.openqa.selenium.internal.selenesedriver.TakeScreenshot;
+import org.openqa.selenium.remote.Augmenter;
+import org.openqa.selenium.remote.DesiredCapabilities;
+import org.openqa.selenium.remote.RemoteWebDriver;
+import org.openqa.selenium.support.ui.ExpectedCondition;
+import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
+
+import testDriver.Actions;
+
+import com.google.common.base.Function;
+import com.thoughtworks.selenium.Selenium;
+
+import Common.Property;
+import Common.Utility;
+
+public class SeleniumImplementation {
+
+	private static String browserName;
+	public static WebDriver driver;
+	private String attribute;
+	private String attributeType;
+	private Selenium selenium;
+	private static WebDriverWait wait = null;
+	WebElement testObject;
+	List<WebElement> testObjects = null;
+	private HashMap<String, String> objDataRow = new HashMap<String, String>();  
+	public SeleniumImplementation(String bName){
+		if(bName != null){
+		this.browserName = bName;
+		initDriver();
+		
+		wait = new WebDriverWait(driver, Integer.parseInt(Property.SyncTimeOut));
+		}
+	}
+	
+	public void setObjectDataRow(HashMap<String, String> objDatarow){
+		if(objDatarow != null){
+			attributeType = Utility.ReplaceVariableInString(objDatarow.get("how"));
+			attribute = Utility.ReplaceVariableInString(objDatarow.get("what"));
+			//Will add more if needed.
+		}
+		this.objDataRow = objDatarow;
+		
+	}
+	
+	
+	public void initDriver(){
+		try{
+		if(Property.IsRemoteExecution.equalsIgnoreCase("true")){
+			String remoteURL;
+			DesiredCapabilities capabilities = new DesiredCapabilities();
+			if(Property.RemoteURL.toLowerCase().contains("saucelabs")){
+				//set all saucelab capabilities here.
+			}
+			remoteURL = Property.RemoteURL + "/wd/hub";
+			
+				URL uri = new URL(remoteURL);
+				if(browserName.equalsIgnoreCase("firefox")){
+					FirefoxProfile remoteProfile = new FirefoxProfile();
+					remoteProfile.setPreference("webdriver_assume_untrusted_issuer", false);
+                    remoteProfile.setAcceptUntrustedCertificates(true);
+                    remoteProfile.setEnableNativeEvents(false);
+                    capabilities.setBrowserName("firefox");
+                    capabilities.setCapability("firefox_profile", remoteProfile.toString().toString());
+                    driver = new RemoteWebDriver(uri, capabilities);
+				}
+				else if(browserName.equalsIgnoreCase("internetexplorer")){
+					capabilities.setBrowserName("internet explorer");
+					capabilities.setCapability("ignoreProtectedModeSettings", true);
+					driver = new RemoteWebDriver(uri,capabilities);
+				}
+			
+			
+		}
+		else{
+			if(browserName.equalsIgnoreCase("firefox")){
+				FirefoxProfile ffprofile = new FirefoxProfile();
+				ffprofile.setPreference(
+						"webdriver_assume_untrusted_issuer", "false");
+				driver = new FirefoxDriver(ffprofile);
+			}
+			else if(browserName.equalsIgnoreCase("internetexplorer")){
+				DesiredCapabilities iecapabilities = DesiredCapabilities
+						.internetExplorer();
+				iecapabilities.setCapability("ignoreProtectedModeSettings",
+						"true");
+				iecapabilities
+						.setCapability(
+								InternetExplorerDriver.INTRODUCE_FLAKINESS_BY_IGNORING_SECURITY_DOMAINS,
+								"true");
+				driver = new InternetExplorerDriver(iecapabilities);
+			}
+			else if(browserName.equalsIgnoreCase("chrome")){
+				
+				 DesiredCapabilities chromeCapabilities = DesiredCapabilities.chrome();
+				    chromeCapabilities.setCapability("chrome.switches", Arrays.asList("--start-maximized","--ignore-certificate-errors"));
+				    //chromeCapabilities.setCapability("chrome.switches", Arrays.asList("--ignore-certificate-errors"));
+				    ChromeDriverService service = new ChromeDriverService.Builder().usingAnyFreePort().usingDriverExecutable(new File("chromedriver.exe")).build();
+				    service.start();
+				    driver = new ChromeDriver(service,chromeCapabilities);
+				
+			}
+			
+		}
+		
+		driver.manage().window().maximize();
+		}
+		catch (Exception e) {
+			System.out.println(e.getMessage());
+		}
+	}
+	
+	public SeleniumImplementation openBrowser(String Url){
+		SeleniumImplementation objSeleniumImplementation = null;
+		  try{
+		   objSeleniumImplementation = new SeleniumImplementation(Property.BrowserName);
+		   driver.get(Url);
+		   this.DeleteAllCookies();
+		   try{
+		   Selenium selenium = new WebDriverBackedSelenium(driver,Url);
+		   selenium.windowFocus();
+		   selenium.windowMaximize();
+		   
+		      driver = ((WrapsDriver)selenium).getWrappedDriver();
+		   
+		  }
+		   catch(Exception x){}
+		     }
+		  catch(Exception e){
+			  System.out.println(e.getMessage());
+		  }
+		  return objSeleniumImplementation;
+	}
+	public WebElement getElement() throws Exception{
+		try{
+		testObject = getElementByAttribute(attribute, attributeType);
+		}
+		catch(Exception e){
+			throw e;
+		}
+		return testObject;
+	}
+	
+	
+	public void DoubleClick() throws Exception{
+		try {
+			
+			 Selenium selenium = this.GetSeleniumOne();
+			 selenium.doubleClick(attribute);
+			
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	public WebElement getElementByAttribute(String Attribute, String AttributeType){
+		try{
+			if(AttributeType.equalsIgnoreCase("css")){
+				testObjects = driver.findElements(By.cssSelector(Attribute));
+			}
+			else if(AttributeType.equalsIgnoreCase("id")){
+				testObjects = driver.findElements(By.id(Attribute));
+			}
+			else if(AttributeType.equalsIgnoreCase("name")){
+				testObjects = driver.findElements(By.name(Attribute));
+			}
+			else if(AttributeType.equalsIgnoreCase("xpath")){
+				testObjects = driver.findElements(By.xpath(Attribute));
+			}
+			else if(AttributeType.equalsIgnoreCase("class")){
+				testObjects = driver.findElements(By.className(Attribute));
+			}
+			else if(AttributeType.equalsIgnoreCase("text")){
+				testObjects = driver.findElements(By.linkText(Attribute));
+			}
+			else{
+				throw new Exception("Incorrect Attribute type mentioned");
+			}
+			
+			
+			if(testObjects.size() == 0){
+				throw new NoSuchElementException("Element couldn't be located");
+			}
+			else{
+				testObject = testObjects.get(0);
+				//TODO add code for parsing between different objects returned.				
+			}
+			return testObject;
+			
+		}
+		catch(NoSuchElementException e){
+			return null;
+		}
+		
+		catch (Exception e) {
+			// TODO: handle exception 
+			return null;
+		}
+	}
+	
+	public void KeyPress(String Key) throws Exception{
+		testObject = waitAndGetElement();
+		if(Key.equalsIgnoreCase("enter")){
+			testObject.sendKeys(Keys.ENTER);
+		}
+		else if(Key.equalsIgnoreCase("arrowdown")){
+			testObject.sendKeys(Keys.ARROW_DOWN);
+		}
+		else if(Key.equalsIgnoreCase("backspace")){
+			testObject.sendKeys(Keys.BACK_SPACE);
+		}
+	}
+	
+	
+	
+	public void check() throws Exception{
+		try {
+			testObject = waitAndGetElement();
+			if(!testObject.isSelected())
+				testObject.click();
+			
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	public void Uncheck() throws Exception{
+		try {
+			testObject = waitAndGetElement();
+			if(testObject.isSelected())
+				testObject.click();
+			
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	
+	public void sendKeys(String Text) throws Exception{
+		try {
+			testObject = waitAndGetElement();
+			//Check ON and OFF condition for radio button and check box.
+			if(Text.equals("ON") || Text.equals("OFF")){
+				String objType = testObject.getAttribute("type");
+				if(objType.equalsIgnoreCase("radio") || objType.equalsIgnoreCase("checkbox")){
+					if(Text.equals("ON")){
+						this.check();
+					}
+					else if(Text.equals("OFF")){
+					    this.Uncheck();	
+					}
+				}
+					
+				
+			}
+			else{
+				try{
+					this.ExecuteScript(testObject, "arguments[0].value=\"\";");
+					
+				}
+				catch(Exception e){ }
+				testObject.sendKeys(Text);
+			}
+         			
+						
+		} 
+		catch(StaleElementReferenceException e){
+			testObject = waitAndGetElement();
+			testObject.clear();
+			testObject.click();
+		}
+		
+		catch (Exception e) {
+			if(e.getMessage().contains("Element is no longer attached to the DOM")){
+				testObject = waitAndGetElement();
+				testObject.clear();
+				testObject.click();
+			}
+			
+			throw e;
+		}
+	}
+	 
+	
+	
+	
+	public void click() throws Exception{
+		try{
+			waitAndGetElement();
+			
+			testObject.click();
+		}
+		catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	public void DeleteAllCookies(){
+		try
+		{
+			driver.manage().deleteAllCookies();
+			Set<Cookie> cookies = driver.manage().getCookies();
+			
+			for (Cookie cookie : cookies) {
+					driver.manage().deleteCookie(cookie);
+			
+				}
+			
+		}
+		catch(Exception e){
+			//Nothing to throw;
+		}
+		
+	}
+	
+	
+	public void FireEvent(String EventName) throws Exception{
+		String script;
+		String onEventName;
+		try {
+			testObject = waitAndGetElement();
+			EventName = EventName.trim().toLowerCase();
+			//Event name should starts with on for internet explorer.
+			if(EventName.startsWith("on")){
+				onEventName = EventName;
+				EventName = EventName.substring(2);
+			}
+			else{
+				onEventName = "on" + EventName;
+			}
+			script = "var canBubble = false;var element = arguments[0];if (document.createEventObject()) {var evt = document.createEventObject();arguments[0].fireEvent('" + onEventName + "', evt);}    else {var evt = document.createEvent(\"HTMLEvents\");evt.initEvent('" + EventName + "', true, true);arguments[0].dispatchEvent(evt);}";
+			
+			//Firefox and other browser has to force this script.
+			if(!browserName.equalsIgnoreCase("internetexplorer")){
+                script = "var evt = document.createEvent(\"HTMLEvents\"); evt.initEvent(\"" +
+                        EventName + "\", true, true );return !arguments[0].dispatchEvent(evt);";
+			}
+			ExecuteScript(testObject, script);
+			
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	
+	
+	public boolean verifyTextPresentOnPage(String text,ArrayList<String> options) throws Exception{
+		try {
+			boolean isTextVerified = false;
+			text = text.trim();
+			text = Utility.ReplaceVariableInString(text);
+			WebElement objPage = driver.findElement(By.xpath("//html"));
+			String pageText = objPage.getText();
+			
+			if(!options.isEmpty()){
+				isTextVerified = Utility.doMatchBasedOnOptions(text, pageText);
+			}
+			else{		
+			isTextVerified = pageText.contains(text);
+			}
+			
+			
+			if(!isTextVerified){
+				Property.Remarks = "Text : " + text + " is not found on page";
+			}
+			return isTextVerified;
+		} 
+		catch(WebDriverException e){
+			if(e.getMessage().contains("No response from server for url")){
+				throw new Exception("No response from Driver");
+			}
+			throw new Exception("No response from the Driver. Session not exists.");
+		}
+		
+		catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	
+	
+	public void SetAttribute(String Property,String PropertyValue) throws Exception{
+		try {
+			waitAndGetElement();
+			String JavaScript = "return arguments[0]." + Property + " = \"" + PropertyValue + "\";";
+			this.ExecuteScript(testObject, JavaScript);
+			
+		} catch (Exception e) {
+			throw e;
+		}
+			
+		
+	}
+	
+/*	//@SuppressWarnings("unchecked")
+	public WebElement waitAndGetElement() throws Exception{
+		try{
+		WebDriverWait wait  = new WebDriverWait(driver, 30);
+		
+		Function<WebDriver, WebElement> funcObjectLoaded;
+		funcObjectLoaded = (Function<WebDriver, WebElement>) this.getElement();
+		wait.until(funcObjectLoaded);
+		return testObject;
+		}
+		catch(TimeoutException e){
+			throw new NoSuchElementException("Unable to locate element: {method: "+ attributeType + ", selector: " + attribute + " }");
+		}
+		catch(Exception e){
+			throw e;
+		}
+	}
+	*/
+	public  Set<String> getWindowHandles(){
+		
+		try {
+			
+			Set<String> windowHandles =  driver.getWindowHandles();
+			return windowHandles;
+			
+		} catch (Exception e) {
+			return null;
+		}
+		
+	}
+	
+	
+	public  String SwitchToMostRecentWindow(){
+		try {
+			
+			Set<String> windowHandles = getWindowHandles();
+			for (String window : windowHandles) {
+				driver.switchTo().window(window);
+			}
+			
+			
+		} catch (Exception e) {
+			return "";
+			
+		}
+		
+		return driver.getWindowHandle();
+	}
+	
+	public void goBack() throws Exception{
+		try {
+			driver.navigate().back();
+			
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	public void goForward() throws Exception{
+		try {
+			driver.navigate().forward();
+			
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	public void refreshBrowser() throws Exception{
+		try {
+			driver.navigate().refresh();
+			
+		} catch (Exception e) {
+			throw e;
+		}
+	}	
+	
+	
+	public WebElement waitAndGetElement() throws Exception{
+		//ExpectedCondition e = new ExpectedCondition<T>() {
+		try{
+		
+		wait.until(new ExpectedCondition<WebElement>() {
+			public WebElement apply(WebDriver d){
+				  try{testObject =  getElement(); return testObject;}
+				  catch(Exception e){return null;}
+								
+			}
+		});
+		return testObject;
+		
+		}
+		catch(TimeoutException exception){
+			throw new NoSuchElementException("Unable to locate element");
+		}
+		catch(Exception e){
+			throw e;
+		}
+	}
+	
+	public void closeBrowser() throws Exception{
+		try {
+			SwitchToMostRecentWindow();
+			driver.close();
+		} 
+		catch (Exception e) {
+		throw e;	
+		}
+	}
+	public void closeAllBrowsers() throws Exception{
+		try{
+			
+			try{
+				driver.quit();
+				
+			}
+			catch(Exception e){
+				Set<String> windwHandles =   getWindowHandles();
+				for (String Handle : windwHandles) {
+					driver.switchTo().window(Handle);
+					try{driver.close();}
+					catch(Exception ex){}
+					}
+			}
+			
+		}
+		catch(WebDriverException we){
+			//Nothing to throw;
+		}
+		catch(Exception e){
+		throw e;	
+		}
+	}
+	public boolean verifyObjectPresent() throws Exception{
+		try {
+			   waitAndGetElement();
+			   if(testObject == null){
+				   Property.Remarks = "Element is not present";
+				   return false;
+			   }
+			   
+			   WebElement element = (WebElement)testObject;
+			   boolean status = element.isDisplayed();
+			   if(!status){
+				   Property.Remarks = "Element is present but not displayed."; 
+			   }
+			   return status;
+			
+		} 
+		catch(NoSuchElementException e){
+			Property.Remarks = e.getMessage();
+			return false;
+		}
+		
+		catch (Exception e) {
+			throw e; 
+		}
+	}
+	
+	public boolean verifyObjectNotPresent() throws Exception{
+		try {
+			boolean status = verifyObjectPresent();
+			if(status){return false;}
+			else { return true;}
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	
+	
+	public boolean verifyObjectProperty(String Property,String PropertyValue,ArrayList<String> options) throws Exception{
+		try {
+			boolean isPropertyVerified = false;
+			String actualPropertyValue = this.GetObjectProperty(Property);
+			
+			if(!options.isEmpty()){
+				isPropertyVerified = Utility.doMatchBasedOnOptions(PropertyValue, actualPropertyValue);
+			}
+			else{		
+			isPropertyVerified = actualPropertyValue.equals(PropertyValue);
+			}
+			if(!isPropertyVerified){
+				Common.Property.Remarks = "Property - '" + Property + "' , actual value - '" + actualPropertyValue + "' doesn't match with expected value - '" + PropertyValue + "'.";
+			}
+			return isPropertyVerified;
+			
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	public String ExecuteScript(WebElement tObject, String Script) throws Exception{
+		try {
+			Object scrResult = null;
+			if(Property.IsRemoteExecution.equalsIgnoreCase("false")){
+				if(browserName.equalsIgnoreCase("firefox")){
+					FirefoxDriver ffdriver = (FirefoxDriver)driver;
+					scrResult = ffdriver.executeScript(Script, tObject);
+					if(scrResult != null){ return scrResult.toString();}
+				}
+				else if(browserName.equalsIgnoreCase("internetexplorer")){
+					InternetExplorerDriver iedriver = (InternetExplorerDriver)driver;
+					scrResult = iedriver.executeScript(Script, tObject);
+					if(scrResult != null){ return scrResult.toString();}
+				}
+				else if(browserName.equalsIgnoreCase("chrome")){
+					ChromeDriver chromeDriver = (ChromeDriver)driver;
+					scrResult = chromeDriver.executeScript(Script, tObject);
+					if(scrResult != null){ return scrResult.toString();}
+				}
+				else{
+					return "";
+				}
+				
+			}
+			else{
+				RemoteWebDriver remoteDriver = (RemoteWebDriver)driver;
+				scrResult = remoteDriver.executeScript(Script, tObject);
+				if(scrResult != null){
+					return scrResult.toString();
+				}
+			}
+			
+			return "";
+			
+		} catch (WebDriverException e) {
+			if(e.getMessage().contains("No response from server for url")){
+				throw new Exception("No response from the Driver");
+			}
+			throw e;
+		}
+		catch(Exception e){
+			throw e;
+		}
+		
+	}
+	public boolean verifyPageProperty(String Property, String PropertyValue,ArrayList<String> options) throws Exception{
+		try {
+			String ActualValue = this.GetPageProperty(Property);
+			boolean IsPagePropertyVerify = false;
+			if(!options.isEmpty()){
+				IsPagePropertyVerify = Utility.doMatchBasedOnOptions(PropertyValue, ActualValue);
+			}
+			
+			else { 
+				if (ActualValue.contains(PropertyValue))
+				{IsPagePropertyVerify = true;
+				} 
+			}
+			
+			
+			if(IsPagePropertyVerify) {return true;}
+			else {return false;}
+			
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	public void NavigateUrl(String Url) throws Exception{
+		try {
+			driver.navigate().to(Url);
+		} 
+		catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	
+	public boolean verifyPageDisplayed() throws Exception
+	{
+		try {
+			
+			return driver.getCurrentUrl().matches(attribute);
+			
+			
+			
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	public void shutDown() throws Exception{
+		try {
+			
+			if(driver.getTitle() != null || driver.getTitle() != ""){
+				driver.close();
+				try{
+					driver.quit();
+				}
+				catch(Exception e){}
+			}
+			
+			
+		} catch (Exception e) {
+			throw e;		}
+	}
+	
+	public String GetPageProperty(String Property) throws Exception{
+		try {
+			if(Property.equalsIgnoreCase("title")){
+				return driver.getTitle();
+			}
+			else if(Property.equalsIgnoreCase("url")){
+				return driver.getCurrentUrl();
+			}
+			else { return null;}
+		} 
+		catch(WebDriverException e){
+			if (e.getMessage().contains("No response from server for url")){
+				throw new WebDriverException("No response from driver");
+			}
+			throw new Exception("No response from driver. Session not exist.");
+		}
+		catch (Exception e) {
+			throw e;
+		}
+		
+	}
+	
+	public String SelectElementByIndex(String Index) throws Exception{
+		try {
+			
+			int index = Integer.parseInt(Index) - 1;
+			testObject = waitAndGetElement();
+			if(testObject.getAttribute("type").equalsIgnoreCase("radio")){
+				testObject = testObjects.get(index);
+				this.ExecuteScript(testObject, "arguments[0].click();");
+				return testObject.getAttribute("value");
+			}
+			
+			else{
+			Select select = new Select(testObject);
+			select.selectByIndex(index);
+			List<WebElement> options = select.getOptions();
+			return options.get(index).getText();
+			}
+			
+			
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	public void selectItem(String ItemtoSelect) throws Exception{
+		try {
+			testObject = waitAndGetElement();
+			Select objSelect = new Select(testObject);
+			objSelect.selectByVisibleText(ItemtoSelect);
+			WebElement selectedOption = objSelect.getFirstSelectedOption();
+			
+			
+		} catch (Exception e) {
+			throw e;
+		}
+	}
+	
+	
+	
+	private Selenium GetSeleniumOne() throws Exception{
+		try{
+		
+		if(selenium == null)
+		selenium = new WebDriverBackedSelenium(driver, driver.getCurrentUrl());
+		
+		try{
+			selenium.start();
+		}
+		catch(Exception e){
+			
+		}
+		return selenium;
+		}
+		catch(Exception e){
+			throw e;
+		}
+	}
+	
+	
+	
+	public String GetObjectProperty(String property) throws Exception{
+		try {
+			waitAndGetElement();
+			String ActualPropertyValue = "";
+			Boolean enable;
+			String JavaScript = "";
+			if(property.equalsIgnoreCase("text")){
+				ActualPropertyValue = testObject.getText();
+			}
+			else if(property.equalsIgnoreCase("style.background") || property.equalsIgnoreCase("style.backgroundimage") || property.equalsIgnoreCase("style.background-image")){
+				if(Property.BrowserName.equalsIgnoreCase("firefox")){
+					JavaScript = "return document.defaultView.getComputedStyle(arguments[0], '').getPropertyValue(\"background-image\");";
+				}
+				else if(Property.BrowserName.equalsIgnoreCase("internetexplorer")){
+					JavaScript = "return arguments[0].currentStyle.backgroundImage;";}
+				else{
+						JavaScript = "return arguments[0].currentStyle.backgroundImage;";
+					}
+				//ActualPropertyValue = this.ExecuteScript(JavaScript);
+				
+				}
+			else if(property.equalsIgnoreCase("tagname")){
+				ActualPropertyValue = testObject.getTagName();
+			}
+			else if (property.equalsIgnoreCase("isEnable")){
+				enable =testObject.isEnabled();
+				ActualPropertyValue = enable.toString();
+			}
+			else{
+				ActualPropertyValue = testObject.getAttribute(property);
+			}
+			return ActualPropertyValue;
+			
+		} catch (Exception e) {
+			throw e;
+		}
+		
+	}
+	
+	public boolean isEnable() throws Exception{
+		try {
+			testObject = waitAndGetElement();
+			if(testObject.isEnabled())
+				return true;
+			
+		} catch (Exception e) {
+			throw e;
+		}
+		return false;
+	}
+	
+	public boolean isNotEnable() throws Exception{
+		try {
+			testObject = waitAndGetElement();
+			if(!testObject.isEnabled())
+				return true;
+			
+		} catch (Exception e) {
+			throw e;
+		}
+		return false;
+	}
+	
+}
+
+
+//FireEvent.
+//KeyPress.
+//GetElementFromFrames.
+
+
+

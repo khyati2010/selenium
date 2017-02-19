@@ -1,0 +1,324 @@
+TestCaseID							TestStep							BDD_Step							Status							Remarks
+
+TestSearchGoldenRecords							openbrowser							Given I Open the browser							pass							
+
+LoginToHIWithoutSecurity							enterdata														fail							null
+
+LoginToHIWithoutSecurity							enterdata														fail							null
+
+LoginToHIWithoutSecurity							click														fail							null
+
+TestSearchGoldenRecords							enterdata							When I enter {data} in Search Input							fail							null
+
+TestSearchGoldenRecords							click							And I Press submit button							fail							null
+
+TestSearchGoldenRecords							verifypageproperty							Then the Url should be like {data}							fail							null
+
+TestSearchGoldenRecords							verifyTextpresent							And {data} should be present on the page							fail							null
+
+TestMoveToNew							openbrowser							Given I Open HI Application.							pass							
+
+LoginToHIWithoutSecurity							enterdata														fail							null
+
+LoginToHIWithoutSecurity							enterdata														fail							null
+
+LoginToHIWithoutSecurity							click														fail							null
+
+TestMoveToNew							navigateUrl							When I Navigate to Move page.							fail							null
+
+TestMoveToNew							verifytextpresent							Then I Verify control is in Move page.							fail							null
+
+TestMoveToNew							click							And I Select Record Type as Person.							fail							null
+
+TestMoveToNew							enterdata							And I Enter KeyWord for search							fail							null
+
+TestMoveToNew							click														fail							null
+
+TestMoveToNew							getObjectProperty							Then I Populate SourceIDs							fail							null
+
+TestMoveToNew							getObjectProperty														fail							null
+
+TestMoveToNew							check							And I Select SR to move.							fail							null
+
+TestMoveToNew							check														fail							null
+
+TestMoveToNew							click							When I Move To New GR							fail							null
+
+TestMoveToNew							verifyobjectpresent							And I Verify SR1 ID							fail							null
+
+TestMoveToNew							verifyobjectpresent							And I verify SR2 ID							fail							null
+
+TestMoveToNew							enterdata							And I Enter Comments.							fail							null
+
+TestMoveToNew							click							And I saved the action							fail							null
+
+TestMoveToNew							click							And I click on Audit panel							fail							null
+
+TestMoveToNew							getObjectProperty							When I stored the GRId1							fail							null
+
+TestMoveToNew							click							And I click on the GR ID 1							fail							null
+
+TestMoveToNew							verifyObjectPresent							And I check for the ShowAll Test Object							fail							null
+
+TestMoveToNew							verifytextpresent							And I verify first Golden record is closed							fail							null
+
+TestMoveToNew							verifytextpresent							And I verify the Golden Record Id							fail							null
+
+TestMoveToNew							closebrowser							Then I close all the browser.							fail							null
+
+TestMoveToExisting							openbrowser							Given I Open HI Application.							pass							
+
+LoginToHIWithoutSecurity							enterdata														fail							null
+
+LoginToHIWithoutSecurity							enterdata														fail							null
+
+LoginToHIWithoutSecurity							click														fail							null
+
+TestMoveToExisting							navigateUrl							And I Navigate to Move page.							fail							null
+
+TestMoveToExisting							verifytextpresent							Then I Verify control is in Move page.							fail							null
+
+TestMoveToExisting							click							And I Select Record Type as Person.							fail							null
+
+TestMoveToExisting							enterdata							And I Enter KeyWord for search							fail							null
+
+TestMoveToExisting							click														fail							null
+
+TestMoveToExisting							getObjectProperty							And I Populate SourceIDs							fail							null
+
+TestMoveToExisting							getObjectProperty														fail							null
+
+TestMoveToExisting							check							And I Select SR to move.							fail							null
+
+TestMoveToExisting							check														fail							null
+
+TestMoveToExisting							click							Then I Move To Existing GR							fail							null
+
+TestMoveToExisting							click							And I Click on drop down image							fail							null
+
+TestMoveToExisting							verifytextpresent							Then I Verify controls on Move to Existing Page							fail							null
+
+TestMoveToExisting							enterdata														fail							null
+
+TestMoveToExisting							click														fail							null
+
+TestMoveToExisting							click														fail							null
+
+TestMoveToExisting							getObjectProperty														fail							null
+
+TestMoveToExisting							click														fail							null
+
+TestMoveToExisting							enterdata														fail							null
+
+TestMoveToExisting							click														fail							null
+
+TestMoveToExisting							getObjectProperty							When I stored the GRId1							fail							null
+
+TestMoveToExisting							getObjectProperty							And I stored second GRId2							fail							null
+
+TestMoveToExisting							navigateUrl							And I open the first Golden Record							fail							null
+
+TestMoveToExisting							closeAllBrowsers														fail							null
+
+TestSourceRecordsSearch							openbrowser							Given I Open HI Application.							pass							
+
+LoginToHIWithoutSecurity							enterdata														fail							null
+
+LoginToHIWithoutSecurity							enterdata														fail							null
+
+LoginToHIWithoutSecurity							click														fail							null
+
+TestSourceRecordsSearch							navigateUrl														fail							null
+
+TestSourceRecordsSearch							click							And I Select Record Type as Person.							fail							null
+
+TestSourceRecordsSearch							enterdata														fail							null
+
+TestSourceRecordsSearch							click														fail							null
+
+TestSplitWithMultipleSourceRecords							openbrowser							Given I Open HI Application.							pass							
+
+LoginToHIWithoutSecurity							enterdata														fail							null
+
+LoginToHIWithoutSecurity							enterdata														fail							null
+
+LoginToHIWithoutSecurity							click														fail							null
+
+TestSplitWithMultipleSourceRecords							navigateUrl							And I Click on Data Steward->Split							fail							null
+
+TestSplitWithMultipleSourceRecords							click							And I Select Record Type as Person.							fail							null
+
+TestSplitWithMultipleSourceRecords							enterdata							And I Enter KeyWord for search							fail							null
+
+TestSplitWithMultipleSourceRecords							click							Then I Click on search button							fail							null
+
+TestSplitWithMultipleSourceRecords							getObjectProperty							And I Get the id of first Golden record							fail							null
+
+TestSplitWithMultipleSourceRecords							click							Then I Click on the first Gloden Record to split							fail							null
+
+TestSplitWithMultipleSourceRecords							verifyObjectProperty							Then I verify Split button is not enabled							fail							null
+
+TestSplitWithMultipleSourceRecords							check							And I Select first SR 							fail							null
+
+TestSplitWithMultipleSourceRecords							verifyObjectProperty							Then I verify Split button is enabled							fail							null
+
+TestSplitWithMultipleSourceRecords							click							And I Click on Split button							fail							null
+
+TestSplitWithMultipleSourceRecords							enterdata							And I Write comment 							fail							null
+
+TestSplitWithMultipleSourceRecords							click							Then I Click on Save							fail							null
+
+TestSplitWithMultipleSourceRecords							closebrowser														fail							null
+
+TestSplitWithOneSourceRecords							openbrowser							Given I Open HI Application.							pass							
+
+LoginToHIWithoutSecurity							enterdata														fail							null
+
+LoginToHIWithoutSecurity							enterdata														fail							null
+
+LoginToHIWithoutSecurity							click														fail							null
+
+TestSplitWithOneSourceRecords							navigateUrl							Then I Click on Data Steward->Split							fail							null
+
+TestSplitWithOneSourceRecords							click							And I Select Record Type as Person.							fail							null
+
+TestSplitWithOneSourceRecords							enterdata							And I Enter KeyWord for search							fail							null
+
+TestSplitWithOneSourceRecords							click							Then I Click on search button							fail							null
+
+TestSplitWithOneSourceRecords							getObjectProperty							And I Get the id of first Golden record							fail							null
+
+TestSplitWithOneSourceRecords							click							Then I Click on the first Gloden Record to split							fail							null
+
+TestSplitWithOneSourceRecords							verifyObjectProperty							And I verify Split button is not enabled							fail							null
+
+TestSplitWithOneSourceRecords							check							Then I Select first SR 							fail							null
+
+TestSplitWithOneSourceRecords							verifyObjectProperty							And I verify Split button is still not enabled							fail							null
+
+TestSplitWithOneSourceRecords							closebrowser														fail							null
+
+TestMergeGoldenRecordsOnSave							openbrowser							Given I Open HI Application.							pass							
+
+LoginToHIWithoutSecurity							enterdata														fail							null
+
+LoginToHIWithoutSecurity							enterdata														fail							null
+
+LoginToHIWithoutSecurity							click														fail							null
+
+TestMergeGoldenRecordsOnSave							navigateUrl							And I Click on Data Steward->Merge							fail							null
+
+TestMergeGoldenRecordsOnSave							click							And I Select Record Type as Person.							fail							null
+
+TestMergeGoldenRecordsOnSave							enterdata							And I Enter KeyWord for search							fail							null
+
+TestMergeGoldenRecordsOnSave							click							Then I Click on search button							fail							null
+
+TestMergeGoldenRecordsOnSave							verifyObjectProperty							And I verify Merge button is not enabled							fail							null
+
+TestMergeGoldenRecordsOnSave							getObjectProperty							Then I Get the id of first Golden record to merge							fail							null
+
+TestMergeGoldenRecordsOnSave							getObjectProperty							And I Get the id of second Golden record to merge							fail							null
+
+TestMergeGoldenRecordsOnSave							click							And I Select first Gloden Record to merge							fail							null
+
+TestMergeGoldenRecordsOnSave							click							And I Select second Gloden Record to merge							fail							null
+
+TestMergeGoldenRecordsOnSave							verifyObjectProperty							Then I verify Merge button is enabled							fail							null
+
+TestMergeGoldenRecordsOnSave							click							And I Click on Merge button							fail							null
+
+TestMergeGoldenRecordsOnSave							enterdata							Writing comment 							fail							null
+
+TestMergeGoldenRecordsOnSave							click							Click on Save							fail							null
+
+TestMergeGoldenRecordsOnSave							closebrowser														fail							null
+
+TestMergeGoldenRecordsOnCancel							openbrowser							Given I Open HI Application.							pass							
+
+LoginToHIWithoutSecurity							enterdata														fail							null
+
+LoginToHIWithoutSecurity							enterdata														fail							null
+
+LoginToHIWithoutSecurity							click														fail							null
+
+TestMergeGoldenRecordsOnCancel							navigateUrl							And I Click on Data Steward->Merge							fail							null
+
+TestMergeGoldenRecordsOnCancel							verifyTextpresent							Then I Verify control is on Merge page							fail							null
+
+TestMergeGoldenRecordsOnCancel							click							And I Select Record Type as Person.							fail							null
+
+TestMergeGoldenRecordsOnCancel							enterdata							And I Enter KeyWord for search							fail							null
+
+TestMergeGoldenRecordsOnCancel							click							Then I Click on search button							fail							null
+
+TestMergeGoldenRecordsOnCancel							verifyObjectProperty							And I verify Merge button is not enabled							fail							null
+
+TestMergeGoldenRecordsOnCancel							getObjectProperty							And I Get the id of first Golden record to merge							fail							null
+
+TestMergeGoldenRecordsOnCancel							getObjectProperty							Then I Get the id of second Golden record to merge							fail							null
+
+TestMergeGoldenRecordsOnCancel							click							Then I Select first Gloden Record to merge							fail							null
+
+TestMergeGoldenRecordsOnCancel							click							And I Select second Gloden Record to merge							fail							null
+
+TestMergeGoldenRecordsOnCancel							verifyObjectProperty							Then I verify Merge button is enabled							fail							null
+
+TestMergeGoldenRecordsOnCancel							click							And I Click on Merge button							fail							null
+
+TestMergeGoldenRecordsOnCancel							enterdata							And I Writing comment 							fail							null
+
+TestMergeGoldenRecordsOnCancel							click							Then I Click on cancel							fail							null
+
+TestMergeGoldenRecordsOnCancel							verifyTextpresent							And I Verify that Golden record merged							fail							null
+
+TestMergeGoldenRecordsOnCancel							closebrowser														fail							null
+
+TestMergeGoldenRecordsAudit							openbrowser							Given I Open HI Application.							pass							
+
+LoginToHIWithoutSecurity							enterdata														fail							null
+
+LoginToHIWithoutSecurity							enterdata														fail							null
+
+LoginToHIWithoutSecurity							click														fail							null
+
+TestMergeGoldenRecordsAudit							navigateUrl							Then I Click on Data Steward->Merge							fail							null
+
+TestMergeGoldenRecordsAudit							verifyTextpresent							And I Verify control is on Merge page							fail							null
+
+TestMergeGoldenRecordsAudit							click							And I Select Record Type as Person.							fail							null
+
+TestMergeGoldenRecordsAudit							enterdata							Then I Enter KeyWord for search							fail							null
+
+TestMergeGoldenRecordsAudit							click							And I Click on search button							fail							null
+
+TestMergeGoldenRecordsAudit							verifyObjectProperty							Then I verify Merge button is not enabled							fail							null
+
+TestMergeGoldenRecordsAudit							getObjectProperty							And I Get the id of first Golden record to merge							fail							null
+
+TestMergeGoldenRecordsAudit							getObjectProperty							Then I Get the id of second Golden record to merge							fail							null
+
+TestMergeGoldenRecordsAudit							click							And I Select first Gloden Record to merge							fail							null
+
+TestMergeGoldenRecordsAudit							click							Then I Select second Gloden Record to merge							fail							null
+
+TestMergeGoldenRecordsAudit							verifyObjectProperty							And I verify Merge button is enabled							fail							null
+
+TestMergeGoldenRecordsAudit							click							Then I Click on Merge button							fail							null
+
+TestMergeGoldenRecordsAudit							enterdata							Then I Writing comment 							fail							null
+
+TestMergeGoldenRecordsAudit							click							And I Click on Save							fail							null
+
+TestMergeGoldenRecordsAudit							click							And I Click on Audit button							fail							null
+
+TestMergeGoldenRecordsAudit							click							Then I Click on Panel							fail							null
+
+TestMergeGoldenRecordsAudit							verifyobjectpresent							And I Source Records displayed on panel							fail							null
+
+TestMergeGoldenRecordsAudit							click							Then I Click on Panel							fail							null
+
+TestMergeGoldenRecordsAudit							verifyobjectpresent							And I Source Records not displayed on panel							fail							null
+
+TestMergeGoldenRecordsAudit							closeallbrowsers														fail							null
+

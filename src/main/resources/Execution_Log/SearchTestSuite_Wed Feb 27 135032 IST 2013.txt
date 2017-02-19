@@ -1,0 +1,56 @@
+TestCaseID							TestStep							BDD_Step							Status							Remarks
+
+TestMoveToNew							openbrowser							Given I Open HI Application.							pass							
+
+LoginToHIWithoutSecurity							enterdata														fail							null
+
+LoginToHIWithoutSecurity							enterdata														fail							null
+
+LoginToHIWithoutSecurity							click														fail							null
+
+TestMoveToNew							navigateUrl							When I Navigate to Move page.							fail							null
+
+TestMoveToNew							verifytextpresent							Then I Verify control is in Move page.							fail							null
+
+TestMoveToNew							click							And I Select Record Type as Person.							fail							null
+
+TestMoveToNew							enterdata							And I Enter KeyWord for search							fail							null
+
+TestMoveToNew							click														fail							null
+
+TestMoveToNew							getObjectProperty							Then I Populate SourceIDs							fail							null
+
+TestMoveToNew							getObjectProperty														fail							null
+
+TestMoveToNew							check							And I Select SR to move.							fail							null
+
+TestMoveToNew							check														fail							null
+
+TestMoveToNew							click							When I Move To New GR							fail							null
+
+TestMoveToNew							verifyobjectpresent							And I Verify SR1 ID							fail							null
+
+TestMoveToNew							verifyobjectpresent							And I verify SR2 ID							fail							null
+
+TestMoveToNew							enterdata							And I Enter Comments.							fail							null
+
+TestMoveToNew							click							And I saved the action							fail							null
+
+TestMoveToNew							getObjectProperty							When I stored the GRId1							fail							null
+
+TestMoveToNew							click							And I click on the GR ID 1							fail							null
+
+TestMoveToNew							verifytextpresent							And I verify first Golden record is closed							fail							null
+
+TestMoveToNew							closeBrowser							then I close the tab							fail							null
+
+TestMoveToNew							getObjectProperty							And I stored second GRId2							fail							null
+
+TestMoveToNew							click							And I open the second Golden Record							fail							null
+
+TestMoveToNew							verifytextpresent							And I verify first Golden record is closed							fail							null
+
+TestMoveToNew							verifytextpresent							And I verify the Goldeb Record Id							fail							null
+
+TestMoveToNew							closeAllBrowsers							Then I close all the browser.							fail							null
+

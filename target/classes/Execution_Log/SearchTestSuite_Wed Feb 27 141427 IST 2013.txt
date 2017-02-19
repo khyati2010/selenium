@@ -1,0 +1,50 @@
+TestCaseID							TestStep							BDD_Step							Status							Remarks
+
+TestMoveToNew							openbrowser							Given I Open HI Application.							pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							click														pass							
+
+TestMoveToNew							navigateUrl							When I Navigate to Move page.							pass							
+
+TestMoveToNew							verifytextpresent							Then I Verify control is in Move page.							pass							
+
+TestMoveToNew							click							And I Select Record Type as Person.							pass							
+
+TestMoveToNew							enterdata							And I Enter KeyWord for search							pass							
+
+TestMoveToNew							click														pass							
+
+TestMoveToNew							getObjectProperty							Then I Populate SourceIDs							pass							
+
+TestMoveToNew							getObjectProperty														pass							
+
+TestMoveToNew							check							And I Select SR to move.							pass							
+
+TestMoveToNew							check														pass							
+
+TestMoveToNew							click							When I Move To New GR							pass							
+
+TestMoveToNew							verifyobjectpresent							And I Verify SR1 ID							pass							
+
+TestMoveToNew							verifyobjectpresent							And I verify SR2 ID							pass							
+
+TestMoveToNew							enterdata							And I Enter Comments.							pass							
+
+TestMoveToNew							click							And I saved the action							pass							
+
+TestMoveToNew							click							And I click on Audit panel							fail							Unable to locate element
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.27.0', revision: '18259', time: '2012-12-05 11:30:53'
+System info: os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.6.0_26'
+Driver info: driver.version: unknown
+
+TestMoveToNew							getObjectProperty							When I stored the GRId1							fail							Unable to locate element
+For documentation on this error, please visit: http://seleniumhq.org/exceptions/no_such_element.html
+Build info: version: '2.27.0', revision: '18259', time: '2012-12-05 11:30:53'
+System info: os.name: 'Windows 7', os.arch: 'x86', os.version: '6.1', java.version: '1.6.0_26'
+Driver info: driver.version: unknown
+

@@ -1,0 +1,35 @@
+#timestamp is variable provided by framework that return the current timestamp.
+#application.url=http://mdmregtest:8080/ui/
+application.url=http://mdmregtest:8080/ui/
+#application.url=https://demo.easydq.com/ui/
+browserType=firefox
+TestSuite=SearchTestSuite
+#TestCase=Localization_DA
+#TestCase=TC_Test01
+MaximumTimeout=20
+urlsplit=http://mdmregtest:8080/ui/search.jsf?user_role=data_steward&user_action=split
+URL=http://mdmregtest:8080/ui/move.jsf?user_role=data_steward&user_action=move
+urlmerge=http://mdmregtest:8080/ui/search.jsf?user_role=data_steward&user_action=merge
+urlsr=http://mdmregtest:8080/ui/search.jsf
+BDDFileFormat=Excel
+#BDDFileName={$testsuite}_{$timestamp}
+BDDFileName=FirstRun
+#Supported : Excel
+#URL=https://demo.easydq.com/ui/move.jsf?user_role=data_steward&user_action=move
+#selenium.iexplore.profile=C:\\Program Files\\Internet Explorer\\iexplore.exe
+#selenium.firefox.profile=C:\\Users\\Xebia\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\5xh0kjb2.TBB
+#selenuim.chrome.profile=C:\\Documents and Settings\\Khyati Sehgal\\Local Settings\\Application Data\\Google\\Chrome\\Application
+#selenium.chrome.profile=C:\\workspaceNewSFDC\\SalesForce_Selenium_Integration
+#selenium.server.port=4444
+#selenium.browser=*chrome
+selenium.highlight=true
+#testng.assertion.mode=soft
+resultspath=/var/result/
+RemoteExecution=true
+SaucelabExecution=false
+#RemoteUrl=http://bushra30:56e5afb8-039e-4980-a46e-ecb8a2692a21@ondemand.saucelabs.com:80
+#RemoteUrl=http://khyati2010:b3b09bf9-5f82-4cb4-b4ff-e3729e950277@ondemand.saucelabs.com:80
+RemoteUrl=http://mdmregclnt:4444
+#commenting the code.
+#Complete Action class.
+

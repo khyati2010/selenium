@@ -1,0 +1,101 @@
+package Common;
+
+import java.util.HashMap;
+
+/**
+ * @author Property : All static data content in framework.
+ *
+ */
+public class Property {
+
+	//Get the file separator as they may vary from environment to environment.
+	public static String FileSeperator = System.getProperty("file.separator");
+	
+	//Query for getting data from Object Repository.
+	public static String ObjectRepositorySheet = "object_defination";
+	
+	//Query for getting the data from Test case.
+	public static String TestCaseSheet = "test_flow";  
+	
+	public static String TestDataSheetName = "test_data";
+	
+	public static String TestDataSheet = Property.TestDataSheetName;  
+	
+	public static String BDDFileQuery = "select * from [Steps$]";
+	
+	//Dynamic JDBC Connection strings declarations.
+	public static String JDBCConnectionStringObjectRepository = "jdbc:odbc:Driver={Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm, *.xlsb)};DBQ={0};READONLY=TRUE";
+	
+	public static String JDBCConnectionStringTestCase = "jdbc:odbc:Driver={Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm, *.xlsb)};DBQ=" + "{0}" + ";READONLY=TRUE";
+	
+	public static String JDBCConnectionStringTestData = "jdbc:odbc:Driver={Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm, *.xlsb)};DBQ={0};READONLY=TRUE";
+	
+	public static String JDBCConnectionStringBDDFile = "jdbc:odbc:Driver={Microsoft Excel Driver (*.xls, *.xlsx, *.xlsm, *.xlsb)};DBQ={0};READONLY=TRUE";
+	
+	public static String IsSauceLabExecution = "false";
+	
+	public static String IsRemoteExecution = "false";
+	
+	public static String RemoteURL = "";
+	
+	public static HashMap<String, String> paramMap = new HashMap<String, String>();
+	
+	public static String PropertyFileLocation = "src"+ FileSeperator +"main"+ FileSeperator +"resources" + FileSeperator + "uiautomation.properties";
+	
+	public static String ObjectRepositoryFileLocation = "src" + FileSeperator +"main"+ FileSeperator +"resources"+ FileSeperator +"ObjectRepository"+ FileSeperator + "ObjectRepository.xls";
+	
+	public static String BrowserName = "firefox";
+	
+	public static String TestSuite = "";
+	
+	public static HashMap<String, String> globalVarMap = new HashMap<String, String>();
+	
+	public static String REUSABLE_INVOKE_KEYWORD = "runreusabletestcase";
+	
+	public static String REUABLE_FILE_NAME = "GlobalActionFile";
+	
+	public static String FILE_EXTENSION = ".xls";
+	
+	public static String TESTCASE_LOC = "src" + FileSeperator+ "main" + FileSeperator +"resources"+ FileSeperator+"TestCase"+FileSeperator;
+	
+	public static String Remarks = "";
+	
+	public static final String PASS = "pass";
+	
+	public static final String FAIL = "fail";
+	
+	public static String StepStatus = "";
+	
+	public static String ApplicationURL = "";
+	
+	public static String SEPERATOR = "#";
+	
+	public static String StepDescription = "";
+	
+	public static String SyncTimeOut = "";
+	
+	public static String LogFile = "src" + FileSeperator+ "main" + FileSeperator +"resources"+ FileSeperator + "Execution_Log" + FileSeperator + "{0}";
+	
+	public static String BDD_StepName = "";
+	
+	public static String BDD_FileFormat = "";
+	
+	public static String BDDFile_Location = "src" + FileSeperator+ "main" + FileSeperator +"resources"+ FileSeperator + "BDDStepRecord"+ FileSeperator;
+	
+	public static String BDD_FileName = "";
+	
+	public static String BDD_FileExtension = ".xlsx";
+	
+	public static String ExecutionStartTime = "";
+	
+	public static String ExecutionEndTime = "";
+	
+	public static String OSString = "";
+	
+	public static String StepExecutionTime = "";
+	
+	
+	
+	
+}
+

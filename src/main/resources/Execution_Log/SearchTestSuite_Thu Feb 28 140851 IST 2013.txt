@@ -1,0 +1,64 @@
+TestCaseID							TestStep							BDD_Step							Status							Remarks
+
+TestMoveToExisting							openbrowser							Given I Open HI Application.							pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							click														pass							
+
+TestMoveToExisting							navigateUrl							And I Navigate to Move page.							pass							
+
+TestMoveToExisting							verifytextpresent							Then I Verify control is in Move page.							pass							
+
+TestMoveToExisting							click							And I Select Record Type as Person.							pass							
+
+TestMoveToExisting							enterdata							And I Enter KeyWord for search							pass							
+
+TestMoveToExisting							click														pass							
+
+TestMoveToExisting							getObjectProperty							And I Populate SourceIDs							pass							
+
+TestMoveToExisting							getObjectProperty														pass							
+
+TestMoveToExisting							check							And I Select SR to move.							pass							
+
+TestMoveToExisting							check														pass							
+
+TestMoveToExisting							click							Then I Move To Existing GR							pass							
+
+TestMoveToExisting							click							And I Click on drop down image							pass							
+
+TestMoveToExisting							verifytextpresent							Then I Verify controls on Move to Existing Page							pass							
+
+TestMoveToExisting							enterdata														pass							
+
+TestMoveToExisting							click														pass							
+
+TestMoveToExisting							click														pass							
+
+TestMoveToExisting							getObjectProperty														pass							
+
+TestMoveToExisting							click														pass							
+
+TestMoveToExisting							enterdata														pass							
+
+TestMoveToExisting							click														pass							
+
+TestMoveToExisting							click							And I click on Audit panel							pass							
+
+TestMoveToExisting							getObjectProperty							When I stored the GRId1							pass							
+
+TestMoveToExisting							click							And I click on the GR ID 1							pass							
+
+TestMoveToExisting							closebrowser														pass							
+
+TestMoveToExisting							getObjectProperty							And I stored second GRId2							pass							
+
+TestMoveToExisting							click														pass							
+
+TestMoveToExisting							verifytextpresent														fail							Text : closed is not found on page
+
+TestMoveToExisting							closeAllBrowsers														pass							
+

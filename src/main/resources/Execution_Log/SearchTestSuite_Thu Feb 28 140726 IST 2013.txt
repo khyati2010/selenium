@@ -1,0 +1,64 @@
+TestCaseID							TestStep							BDD_Step							Status							Remarks
+
+TestMoveToExisting							openbrowser							Given I Open HI Application.							pass							
+
+LoginToHIWithoutSecurity							enterdata														fail							null
+
+LoginToHIWithoutSecurity							enterdata														fail							null
+
+LoginToHIWithoutSecurity							click														fail							null
+
+TestMoveToExisting							navigateUrl							And I Navigate to Move page.							fail							null
+
+TestMoveToExisting							verifytextpresent							Then I Verify control is in Move page.							fail							null
+
+TestMoveToExisting							click							And I Select Record Type as Person.							fail							null
+
+TestMoveToExisting							enterdata							And I Enter KeyWord for search							fail							null
+
+TestMoveToExisting							click														fail							null
+
+TestMoveToExisting							getObjectProperty							And I Populate SourceIDs							fail							null
+
+TestMoveToExisting							getObjectProperty														fail							null
+
+TestMoveToExisting							check							And I Select SR to move.							fail							null
+
+TestMoveToExisting							check														fail							null
+
+TestMoveToExisting							click							Then I Move To Existing GR							fail							null
+
+TestMoveToExisting							click							And I Click on drop down image							fail							null
+
+TestMoveToExisting							verifytextpresent							Then I Verify controls on Move to Existing Page							fail							null
+
+TestMoveToExisting							enterdata														fail							null
+
+TestMoveToExisting							click														fail							null
+
+TestMoveToExisting							click														fail							null
+
+TestMoveToExisting							getObjectProperty														fail							null
+
+TestMoveToExisting							click														fail							null
+
+TestMoveToExisting							enterdata														fail							null
+
+TestMoveToExisting							click														fail							null
+
+TestMoveToExisting							click							And I click on Audit panel							fail							null
+
+TestMoveToExisting							getObjectProperty							When I stored the GRId1							fail							null
+
+TestMoveToExisting							click							And I click on the GR ID 1							fail							null
+
+TestMoveToExisting							closebrowser														fail							null
+
+TestMoveToExisting							getObjectProperty							And I stored second GRId2							fail							null
+
+TestMoveToExisting							click														fail							null
+
+TestMoveToExisting							verifytextpresent														fail							null
+
+TestMoveToExisting							closeAllBrowsers														fail							null
+

@@ -1,0 +1,15 @@
+application.url=http://mdmregtest:8080/ui/
+browserType=chrome
+TestSuite=SearchTestSuite
+TestCase=Localization_NE
+MaximumTimeout=35
+urlsplit=https://mdmregtest.humaninference.com:8443/ui/search.jsf?user_role=data_steward&user_action=split
+URL=https://mdmregtest.humaninference.com:8443/ui/move.jsf?user_role=data_steward&user_action=move
+urlmerge=https://mdmregtest.humaninference.com:8443/ui/search.jsf?user_role=data_steward&user_action=merge
+urlsr=https://mdmregtest.humaninference.com:8443/ui/search.jsf
+selenium.highlight=true
+#testng.assertion.mode=soft
+resultspath=/var/result/
+RemoteExecution=false
+SaucelabExecution=false
+#RemoteUrl=http://192.168.0.77:4444

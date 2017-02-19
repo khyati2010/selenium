@@ -1,0 +1,51 @@
+#timestamp is variable provided by framework that return the current timestamp.
+
+application.url=http://mdmregtest:8080/ui/
+browserType=chrome
+TestSuite=Admin_TestSuite
+
+#TestCase=TestSearchGRFromFrontPage,TestGRSearchALL,TestGRSearchPerson,TestGRSearchOrganization,TestSRSearchALL,TestSRSearchPerson,TestSRSearchOrganization
+#TestCase=TestSearchGRFromFrontPage,TestGRSearchALL,TestGRSearchPerson,TestGRSearchOrganization,TestSRSearchFromFrontPage,TestSRSearchALL,TestSRSearchPerson,TestSRSearchOrganization,TestFullNamePostCodePerson,TestSearchPostCodePerson,TestPostalCodeAndHouseNumPerson,TestStreetPostTownPerson,TestDomaniNamePerson,TestFullNamePostCodeOrg,TestPostalCodeAndHNumOrg,TestStreetPostTownOrg
+TestCase=MDM_check_stats_validity
+MaximumTimeout=30
+urlsplit=https://abnapp-2:8080/ui/search.jsf?user_role=data_steward&user_action=split
+URL=https://abnapp-2:8080/ui/move.jsf?user_role=data_steward&user_action=move
+urlmerge=https://abnapp-2:8080/ui/search.jsf?user_role=data_steward&user_action=merge
+urlsr=https://abnapp-2:8080/ui/search.jsf
+
+
+BDDFileFormat=Excel
+BDDFileName={$testsuite}_{$timestamp}
+#BDDFileName=FirstRun
+#Supported : Excel
+#URL=https://demo.easydq.com/ui/move.jsf?user_role=data_steward&user_action=move
+#selenium.iexplore.profile=C:\\Program Files\\Internet Explorer\\iexplore.exe
+#selenium.firefox.profile=C:\\Users\\Xebia\\AppData\\Roaming\\Mozilla\\Firefox\\Profiles\\5xh0kjb2.TBB
+#selenuim.chrome.profile=C:\\Documents and Settings\\Khyati Sehgal\\Local Settings\\Application Data\\Google\\Chrome\\Application
+#selenium.chrome.profile=C:\\workspaceNewSFDC\\SalesForce_Selenium_Integration
+#selenium.server.port=4444
+#selenium.browser=*chrome
+selenium.highlight=true
+#testng.assertion.mode=soft
+resultspath=/var/result/
+RemoteExecution=false
+SaucelabExecution=false
+#RemoteUrl=http://bushra30:56e5afb8-039e-4980-a46e-ecb8a2692a21@ondemand.saucelabs.com:80
+#RemoteUrl=http://khyati2010:b3b09bf9-5f82-4cb4-b4ff-e3729e950277@ondemand.saucelabs.com:80
+RemoteUrl=http://ie8winxp:9515
+###DB2 Related Details####
+db.conn.string=jdbc:db2://mdmdb2:50001
+db.name=testmdm
+db.username=db2inst1
+db.password=db2inst1
+##DB2 Related Details####
+###Postgress Related Details####
+#db.conn.string=jdbc:postgresql://devcdidb1.humaninference.com:5432
+#db.name=testmdm
+#db.username=postgres
+#db.password=postgres
+###Postgress Related Details####
+
+#commenting the code.
+#Complete Action class.
+

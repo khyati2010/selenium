@@ -1,0 +1,10 @@
+<testng-results>
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="40" started-at="2012-11-02T15:06:14Z" finished-at="2012-11-02T15:06:14Z">
+    <groups>
+    </groups>
+    <test name="com.hi.uiautomation.testscripts.TestEngine" duration-ms="40" started-at="2012-11-02T15:06:14Z" finished-at="2012-11-02T15:06:14Z">
+    </test>
+  </suite>
+</testng-results>

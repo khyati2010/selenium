@@ -1,0 +1,48 @@
+TestCaseID							TestStep							BDD_Step							Status							Remarks
+
+TestMoveToNew							openbrowser							Given I Open HI Application.							pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							enterdata														pass							
+
+LoginToHIWithoutSecurity							click														pass							
+
+TestMoveToNew							navigateUrl							When I Navigate to Move page.							pass							
+
+TestMoveToNew							verifytextpresent							Then I Verify control is in Move page.							pass							
+
+TestMoveToNew							click							And I Select Record Type as Person.							pass							
+
+TestMoveToNew							enterdata							And I Enter KeyWord for search							pass							
+
+TestMoveToNew							click														pass							
+
+TestMoveToNew							getObjectProperty							Then I Populate SourceIDs							pass							
+
+TestMoveToNew							getObjectProperty														pass							
+
+TestMoveToNew							check							And I Select SR to move.							pass							
+
+TestMoveToNew							check														pass							
+
+TestMoveToNew							click							When I Move To New GR							pass							
+
+TestMoveToNew							verifyobjectpresent							And I Verify SR1 ID							pass							
+
+TestMoveToNew							verifyobjectpresent							And I verify SR2 ID							pass							
+
+TestMoveToNew							enterdata							And I Enter Comments.							pass							
+
+TestMoveToNew							click							And I saved the action							pass							
+
+TestMoveToNew							click							And I click on Audit panel							pass							
+
+TestMoveToNew							getObjectProperty							When I stored the GRId1							pass							
+
+TestMoveToNew							click							And I click on the GR ID 1							pass							
+
+TestMoveToNew							verifytextpresent							And I verify first Golden record is closed							fail							Text : This golden record is closed and is no longer associated to any source records.is not found on page
+
+TestMoveToNew							closeAllBrowsers							Then I close all the browser.							pass							
+
